@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 # TODO: add necessary import
 
 # Optional: implement hyperparameter tuning.
-def train_model(X_train, y_train):
+def train_model(X_train, y_train, C=1.0, max_iter=100):
     """
     Trains a machine learning model and returns it.
 
@@ -22,8 +22,8 @@ def train_model(X_train, y_train):
     """
     model = LogisticRegression(
         random_state=234,
-        C=1.0,
-        max_iter=100,
+        C=C,
+        max_iter=max_iter,
         tol=0.0001
     )
 
@@ -82,7 +82,8 @@ def save_model(model, path):
     path : str
         Path to save pickle file.
     """
-    pickle.dump(model, open(path, 'wb'))
+    with open(path, 'wb') as f:
+        pickle.dump(model, f)
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
@@ -128,9 +129,9 @@ def performance_on_categorical_slice(
 
     """
     X_slice, y_slice, _, _ = process_data(
-        data[column_name],
-        categorical_features,
-        label,
+        data,
+        categorical_features=categorical_features,
+        label=label,
         training=False,
         encoder=encoder,
         lb=lb
