@@ -1,0 +1,4 @@
+modeling:
+  c: 10
+  solver: 'newton-cg'
+  l1_ratio: 0
