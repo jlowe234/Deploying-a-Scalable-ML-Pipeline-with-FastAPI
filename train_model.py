@@ -21,12 +21,8 @@ def run(config: DictConfig):
     print(data_path)
     data = pd.read_csv(data_path)
 
-    # TODO: split the provided data to have a train dataset and a test dataset
-    # Optional enhancement, use K-fold cross validation instead of a train-test split.
     train, test = train_test_split(data, test_size=0.3, random_state=234)
-    # kf = KFold()
 
-    # for _, train_index, test_index in kf.split(train) 
     # DO NOT MODIFY
     cat_features = [
         "workclass",
