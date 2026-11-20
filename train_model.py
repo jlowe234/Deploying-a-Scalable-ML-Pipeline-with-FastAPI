@@ -49,7 +49,6 @@ def run(config: DictConfig):
         lb=lb,
     )
 
-    # TODO: use the train_model function to train the model on the training dataset
     model = train_model(
         X_train, 
         y_train,
@@ -69,7 +68,6 @@ def run(config: DictConfig):
         model_path
     ) 
 
-    # TODO: use the inference function to run the model inferences on the test dataset.
     preds = inference(model, X_test)
 
     # Calculate and print the metrics
@@ -79,9 +77,6 @@ def run(config: DictConfig):
         print(f"params: {config['modeling']}", file=f)
         print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
         
-
-    # TODO: compute the performance on model slices using the performance_on_categorical_slice function
-    # iterate through the categorical features
     for col in cat_features:
         # iterate through the unique values in one categorical feature
         for slicevalue in sorted(test[col].unique()):
@@ -101,6 +96,5 @@ def run(config: DictConfig):
                 print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
 
     
-# TODO: Hyperparameter tuning and continuing on from step 4 ML Pipeline.
 if __name__ == "__main__":
     run()
