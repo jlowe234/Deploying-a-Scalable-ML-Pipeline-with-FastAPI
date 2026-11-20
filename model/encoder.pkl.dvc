@@ -1,0 +1,5 @@
+outs:
+- md5: d636da26cac9f5cd4d646534a96faa7d
+  size: 1978
+  hash: md5
+  path: encoder.pkl
