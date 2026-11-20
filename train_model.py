@@ -2,7 +2,7 @@ import os
 import hydra
 from omegaconf import DictConfig
 import pandas as pd
-from sklearn.model_selection import train_test_split, KFold
+from sklearn.model_selection import train_test_split
 
 from ml.data import process_data
 from ml.model import (
@@ -18,7 +18,6 @@ from ml.model import (
 def run(config: DictConfig):
     project_path = "./"
     data_path = os.path.join(project_path, "data", "census.csv")
-    print(data_path)
     data = pd.read_csv(data_path)
 
     train, test = train_test_split(data, test_size=0.3, random_state=234)
